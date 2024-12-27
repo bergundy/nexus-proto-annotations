@@ -17,8 +17,8 @@ extend google.protobuf.MethodOptions {
 message OperationOptions {
   // Nexus operation name (defaults to proto method name).
   string name = 1;
-  // Optional next stage for the operation, a method name in the same service.
-  string next_stage = 2;
+  // Optional start result for the operation, a proto message name.
+  string start_result = 2;
 }
 
 message ServiceOptions {
