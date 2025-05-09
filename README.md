@@ -65,3 +65,15 @@ service ExampleService {
 }
 ```
 
+## Contribute
+
+### Generate Go files
+
+Any change in the proto definitions must be reflected in the associated Go package and commited. Run the following command on change:
+
+`buf generate`
+
+
+### Push to the buf registy
+
+`buf push`
