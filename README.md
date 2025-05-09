@@ -41,6 +41,27 @@ service ExampleService {
 }
 ```
 
+#### (nexus.v1.service).tags
+
+`repeated string`
+
+Tags a Nexus Service. Used by code generators for Service inclusion and exclusion.
+
+**Example:**
+
+```protobuf
+syntax = "proto3";
+
+package example.v1;
+
+import "nexus/v1/options.proto";
+
+service ExampleService {
+  option (nexus.v1.service).tags = "tag1";
+  option (nexus.v1.service).tags = "tag2";
+}
+```
+
 ### Method
 
 #### (nexus.v1.operation).name
@@ -61,6 +82,29 @@ import "nexus/v1/options.proto";
 service ExampleService {
   rpc Foo(FooInput) returns (FooResponse) {
 	option (nexus.v1.operation).name = "foo";
+  }
+}
+```
+
+#### (nexus.v1.operation).tags
+
+`repeated string`
+
+Tags a Nexus Service. Used by code generators for Operation inclusion and exclusion.
+
+**Example:**
+
+```protobuf
+syntax = "proto3";
+
+package example.v1;
+
+import "nexus/v1/options.proto";
+
+service ExampleService {
+  rpc Foo(FooInput) returns (FooResponse) {
+	option (nexus.v1.operation).tags = "tag1";
+	option (nexus.v1.operation).tags = "tag2";
   }
 }
 ```
