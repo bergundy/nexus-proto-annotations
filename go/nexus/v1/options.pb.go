@@ -25,7 +25,9 @@ const (
 type OperationOptions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Nexus operation name (defaults to proto method name).
-	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Tags to attach to the operation. Used by code generators to include and exclude operations.
+	Tags          []string `protobuf:"bytes,2,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,10 +69,19 @@ func (x *OperationOptions) GetName() string {
 	return ""
 }
 
+func (x *OperationOptions) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
 type ServiceOptions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Nexus service name (defaults to proto service full name).
-	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Tags to attach to the service. Used by code generators to include and exclude services.
+	Tags          []string `protobuf:"bytes,2,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -112,6 +123,13 @@ func (x *ServiceOptions) GetName() string {
 	return ""
 }
 
+func (x *ServiceOptions) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
 var file_nexus_v1_options_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.ServiceOptions)(nil),
@@ -147,11 +165,13 @@ var File_nexus_v1_options_proto protoreflect.FileDescriptor
 
 const file_nexus_v1_options_proto_rawDesc = "" +
 	"\n" +
-	"\x16nexus/v1/options.proto\x12\bnexus.v1\x1a google/protobuf/descriptor.proto\"&\n" +
+	"\x16nexus/v1/options.proto\x12\bnexus.v1\x1a google/protobuf/descriptor.proto\":\n" +
 	"\x10OperationOptions\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"$\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
+	"\x04tags\x18\x02 \x03(\tR\x04tags\"8\n" +
 	"\x0eServiceOptions\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name:W\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
+	"\x04tags\x18\x02 \x03(\tR\x04tags:W\n" +
 	"\aservice\x12\x1f.google.protobuf.ServiceOptions\x18\xa9@ \x01(\v2\x18.nexus.v1.ServiceOptionsR\aservice\x88\x01\x01:\\\n" +
 	"\toperation\x12\x1e.google.protobuf.MethodOptions\x18\xaa@ \x01(\v2\x1a.nexus.v1.OperationOptionsR\toperation\x88\x01\x01B\x9e\x01\n" +
 	"\fcom.nexus.v1B\fOptionsProtoP\x01Z?github.com/bergundy/nexus-proto-annotations/go/nexus/v1;nexusv1\xa2\x02\x03NXX\xaa\x02\bNexus.V1\xca\x02\bNexus\\V1\xe2\x02\x14Nexus\\V1\\GPBMetadata\xea\x02\tNexus::V1b\x06proto3"

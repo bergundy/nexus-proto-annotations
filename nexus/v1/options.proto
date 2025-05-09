@@ -17,9 +17,13 @@ extend google.protobuf.MethodOptions {
 message OperationOptions {
   // Nexus operation name (defaults to proto method name).
   string name = 1;
+  // Tags to attach to the operation. Used by code generators to include and exclude operations.
+  repeated string tags = 2;
 }
 
 message ServiceOptions {
   // Nexus service name (defaults to proto service full name).
   string name = 1;
+  // Tags to attach to the service. Used by code generators to include and exclude services.
+  repeated string tags = 2;
 }
